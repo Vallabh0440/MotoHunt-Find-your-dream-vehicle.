@@ -1,0 +1,27 @@
+img {
+    height: 88vh;
+    width: 99vw;
+    object-fit: cover;  /* Ensures the image fills the space without distortion */
+    max-width: 100%;    /* Prevents overflow on small screens */
+}
+
+img {
+    width: 100%;
+    transition: filter 0.3s ease-in-out;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {  /* Tablets & smaller screens */
+    img {
+        height: auto;
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {  /* Mobile devices */
+    img {
+        height: auto;
+        width: 100%;
+        object-fit: contain; /* Prevents cropping on small screens */
+    }
+}

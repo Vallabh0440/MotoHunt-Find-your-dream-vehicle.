@@ -1,0 +1,20 @@
+
+<app-navbar (modelSelected)="onModelSelect($event)" (variantSelected)="onVariantSelect($event)"></app-navbar>
+
+<!-- Show Home content only if no model or variant is selected -->
+<div class="main">
+    <img [src]="imageUrl" alt="Home Image" width="300">
+    <app-card></app-card>
+</div>
+
+
+
+<!-- Show Car Detail when a model is selected -->
+<!-- <app-car-detail  
+  *ngIf="selectedModel" 
+  [carName]="selectedModel" 
+  [variantName]="selectedVariant" 
+  (close)="showHome1()">
+</app-car-detail> -->
+
+<!-- <router-outlet></router-outlet>     -->

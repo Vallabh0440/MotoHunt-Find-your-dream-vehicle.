@@ -1,0 +1,89 @@
+
+<div class="col-lg-12 control-section color-appbar-section">
+  <div class="color-appbar-container">
+    <ng-template ngFor let-appBarColor [ngForOf]="appBarColors">
+      <div class="row">
+        <div class="col-md-12"></div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <ejs-appbar [colorMode]="appBarColor.colorMode">
+          
+            <button
+              ejs-button
+              cssClass="e-inherit home e-appbar-menu"
+              routerLink="/"
+              >
+              Home
+            </button>
+
+            <ejs-menu
+              [items]="menuItems"
+              (select)="onMenuItemClick($event)"
+            ></ejs-menu>
+
+            <ejs-menu
+              *ngIf="selectedModel"
+              [items]="verticalMenuItems[selectedModel]"
+              (select)="onVariantSelect($event.item?.text)"
+            >
+            </ejs-menu>
+
+            <ejs-menu
+              [items]="usedcarsDropDownButtonItems"
+              content="Used Cars"
+            ></ejs-menu>
+            
+            <ejs-menu
+              [items]="companyDropDownButtonItems"
+              content="Company"
+            ></ejs-menu>
+
+            <div class="e-appbar-spacer"></div>
+            <div class="e-appbar-spacer"></div>
+
+            <div style="width: 400px; margin-right: 30px">
+              <span class="e-input-group e-control-wrapper e-inherit">
+                <input
+                  type="text"
+                  class="e-searchinput e-input"
+                  placeholder="Search"
+                />
+                <span class="e-icons e-search e-input-group-icon"></span>
+              </span>
+            </div>
+
+            <div class="e-appbar-separator"></div>
+            <button
+              ejs-button
+              [isPrimary]="appBarColor.isPrimary"
+              [cssClass]="appBarColor.loginClass"
+            >
+              Login
+            </button>
+            <div class="e-appbar-separator"></div>
+            <button
+              ejs-button
+              [isPrimary]="appBarColor.isPrimary"
+              [cssClass]="appBarColor.loginClass"
+            >
+              Sign Up
+            </button>
+
+            <ejs-menu
+              cssClass="e-inherit e-appbar-icon-menu {{
+                appBarColor.colorClass
+              }}"
+              [items]="verticalMenuItems"
+              (beforeItemRender)="onBeforeItemRender($event)"
+            ></ejs-menu>
+          </ejs-appbar>
+        </div>
+      </div>
+      <br />
+    </ng-template>
+  </div>
+</div>
+
+<!-- <router-outlet></router-outlet> -->
+ 
