@@ -1,0 +1,145 @@
+<!-- <div class="car-grid">
+     <h2 class="explore-title">Explore Cars By Price</h2>
+  <div *ngFor="let car of carss" class="car-card">
+    <img
+      [src]="'assets/' + getImageUrl(car.images)"
+      alt="{{ car.modelName }}"
+    />
+    <h3>{{ car.modelName }}</h3>
+    <p><strong>Price:</strong> ₹{{ car.price | number }}</p>
+    <p><strong>Type:</strong> {{ car.carType }}</p>
+  </div>
+</div> -->
+
+
+
+
+<div class="car-grid">
+  <h2 class="explore-title">Explore Cars By Price</h2>
+
+  <div class="price-slider">
+    <label>Min Price: ₹{{ minPrice | number }}</label>
+    <input type="range" [(ngModel)]="minPrice" min="100000" max="2000000" step="50000" />
+  
+    <label>Max Price: ₹{{ maxPrice | number }}</label>
+    <input type="range" [(ngModel)]="maxPrice" min="100000" max="2000000" step="50000" />
+  
+    <button class="btn2" (click)="fetchCarsByPrice(minPrice, maxPrice)">Apply Filter</button>
+  </div>
+
+  <div *ngFor="let car of carss" class="car-card">
+    <a [routerLink]="['/model', car.modelName]">
+    <img [src]="getImageUrl(car.images)" alt="{{ car.modelName }}" class="car-image" />
+    <h3>{{ car.modelName }}</h3>
+    <p><strong>Price:</strong> ₹{{ car.price | number }}</p>
+    <p><strong>Type:</strong> {{ car.carType }}</p>
+    </a>
+</div>
+<div *ngIf="!carss?.length">
+  <p>No cars available for this type.</p>
+</div>
+
+  <!-- ===============================================BY BODY TYPE======================================================= -->
+  <div class="explore-container">
+    <h2 class="explore-title">Explore Cars by Body Type</h2>
+  
+    <div class="car-type-tabs">
+      <button
+        *ngFor="let type of carTypes"
+        [class.active]="selectedType === type"
+        (click)="getCarsByType(type)"
+      >
+        {{ type }}
+      </button>
+    </div> 
+
+  
+    <div class="car-list" *ngIf="selectedType && cars?.length">
+      <div class="car-card" *ngFor="let car of cars">
+        <a [routerLink]="['/model', car.modelName]">
+          <img [src]="getImageUrl(car.images)" alt="{{ car.modelName }}" class="car-image" />
+
+        <div class="car-info">
+          <h4 class="car-title">{{ car.modelName }}</h4>
+          <p class="car-price">₹ {{ car.price }}</p>
+          <!-- <button class="car-offer-btn">BUY</button> -->
+        </div>
+        </a>
+    </div>
+  
+  
+    <div *ngIf="!cars?.length">
+      <p>No cars available for this type.</p>
+    </div>
+  
+    <div class="view-all-link" *ngIf="cars?.length">
+      <button class="view-all-button" (click)="viewAllCars()">
+        View All {{ selectedType }} Cars →
+      </button>
+    </div>
+  </div>
+ 
+
+ 
+<!-- -------------------------------------------------------------------------------------------------------------- -->
+
+   <!-- BY LOGO-->
+    
+  <div class="explore-container">
+    <h2 class="explore-title">Explore New Cars by Brand</h2>
+
+    <!-- Simple display -->
+    <div class="brand-grid">
+      <div *ngFor="let make of makeData" class="brand-card" (click)="onMakeClick(make.id)">
+        <div class="brand-logo-container">
+            <img 
+              [src]="'http://localhost:3000/uploads/logos/' + make.logo" 
+              alt="{{ make.company }} Logo"
+              class="brand-logo"
+            />
+          </div>
+          <div class="brand-name">{{ make.company }}</div>
+      
+      </div>
+    </div>
+    
+    <div class="view-all">
+      <button class="view-all-button" (click)="viewAllBrands()">
+        View All Brands <span class="view-all-icon"></span>
+      </button>
+    </div>
+  </div>
+
+  
+<!-- 
+   <div class="logo-container">
+    <div
+      class="logo-item"
+      *ngFor="let make of makeData"
+      (click)="onMakeLogoClick(make)"
+    >
+      <img
+        [src]="'http://localhost:3000/uploads/' + make.logo"
+        [alt]="make.company"
+      />
+      <p>{{ make.company }}</p>
+    </div>
+  </div> -->
+  
+  <!-- Models of selected Make -->
+  <!-- <div *ngIf="selectedMakeModels.length > 0">
+    <h2>{{ selectedMakeName }} Models</h2>
+  
+    <div class="model-card" *ngFor="let model of selectedMakeModels">
+      <img
+        [src]="'http://localhost:3000/uploads/' + model.images"
+        [alt]="model.modelName"
+      />
+      <h3>{{ model.modelName }}</h3>
+      <p>Engine: {{ model.engine }}</p>
+      <p>Power: {{ model.power }}</p>
+      <p>Transmission: {{ model.transmission }}</p>
+      <p>Price: ₹{{ model.price | number }}</p>
+    </div>
+  </div>
+   -->

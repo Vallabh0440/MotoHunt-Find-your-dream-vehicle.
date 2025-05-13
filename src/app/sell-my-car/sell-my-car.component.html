@@ -1,0 +1,31 @@
+<div class="container">
+  <button (click)="startSelling()" class="btn btn-primary" *ngIf="currentStep === 0">Sell My Car</button>
+
+  <!-- User Form Step -->
+  <form *ngIf="currentStep === 1" [formGroup]="userForm" (ngSubmit)="loadUsedCarForm()" class="form">
+    <h3>User Details</h3>
+    <input formControlName="userName" placeholder="Name" />
+    <input formControlName="phoneNumber" placeholder="Phone Number" />
+    <input formControlName="userEmail" placeholder="Email" />
+    <input formControlName="userAddress" placeholder="Address" />
+    <input formControlName="userCity" placeholder="City" />
+    <button type="submit" class="btn btn-success">Continue</button>
+  </form>
+
+  <!-- Car Form Step -->
+  <form *ngIf="currentStep === 2" [formGroup]="carForm" (ngSubmit)="submitCarDetails()" class="form">
+    <h3>Car Details</h3>
+    <input formControlName="carName" placeholder="Car Name" />
+    <input formControlName="carBrand" placeholder="Car Brand" />
+    <input formControlName="imageUrl" placeholder="Image URL" />
+    <input formControlName="carPrice" type="number" placeholder="Price" />
+    <input formControlName="carEngine" placeholder="Engine" />
+    <input formControlName="cartransmission" placeholder="Transmission" />
+    <input formControlName="fuelType" placeholder="Fuel Type" />
+    <input formControlName="driveType" placeholder="Drive Type" />
+    <input formControlName="carType" placeholder="Car Type" />
+    <input formControlName="kilometersDriven" type="number" placeholder="Kilometers Driven" />
+    <input formControlName="ownership" placeholder="Ownership" />
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>

@@ -1,0 +1,52 @@
+<!-- Wrapper with flex layout applied -->
+<!-- <div class="card-grid">
+    <div *ngIf="filteredCars?.length > 0; else noResults">
+      <div *ngFor="let car of filteredCars" class="car-card">
+        <img [src]="getImageUrl(car.images)" alt="{{ car.modelName }}" class="car-image" />
+        <h3>{{ car.modelName }}</h3>
+        <p>Type: {{ car.carType }}</p>
+        <p>Price: ₹{{ car.price | number }}</p>
+        <p>Mileage: {{ car.mileage }}</p>
+        <p>Engine: {{ car.engine }}</p>
+        <p>Power: {{ car.power }}</p>
+        <p>Torque: {{ car.torque }}</p>
+        <p>Transmission: {{ car.transmission }}</p>
+        <p>Fuel: {{ car.fueltype }}</p>
+      </div>
+    </div>
+  </div>
+  
+  <ng-template #noResults>
+    <p>No cars found for the selected filters.</p>
+  </ng-template>
+   -->
+
+   <!-- Wrapper with flex layout applied -->
+<div class="card-grid">
+  <!-- <div *ngIf="filteredCars?.length > 0; else noResults"> -->
+    <div *ngFor="let car of filteredCars" class="car-card e-card e-hover">
+      <img [src]="getImageUrl(car.images)" alt="{{ car.modelName }}" class="car-image" />
+      <div class="e-card-header">
+        <div class="e-card-header-caption">
+          <h3 class="e-card-title">{{ car.modelName }}</h3>
+        </div>
+      </div>
+      <div class="e-card-content">
+        <p>Type: {{ car.carType }}</p>
+        <p>Price: ₹{{ car.price | number }}</p>
+        <p>Mileage: {{ car.mileage }}</p>
+        <p>Engine: {{ car.engine }}</p>
+        <p>Power: {{ car.power }}</p>
+        <p>Torque: {{ car.torque }}</p>
+        <p>Transmission: {{ car.transmission }}</p>
+        <p>Fuel: {{ car.fueltype }}</p>
+      </div>
+    </div>
+  </div>
+<!-- </div> -->
+
+<ng-template #noResults>
+  <p>No cars found for the selected filters.</p>
+</ng-template>
+
+

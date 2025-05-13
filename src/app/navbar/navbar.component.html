@@ -12,7 +12,7 @@
             <button
               ejs-button
               cssClass="e-inherit home e-appbar-menu"
-              routerLink="/"
+              (click)="returnToHome()"
               >
               Home
             </button>
@@ -32,6 +32,7 @@
             <ejs-menu
               [items]="usedcarsDropDownButtonItems"
               content="Used Cars"
+              (select)="onMenuItemClick($event)"
             ></ejs-menu>
             
             <ejs-menu
@@ -55,23 +56,30 @@
 
             <div class="e-appbar-separator"></div>
             <button
+            *ngIf="!loggedIn"
               ejs-button
               [isPrimary]="appBarColor.isPrimary"
               [cssClass]="appBarColor.loginClass"
+              (click)="openLoginDialog()"
             >
               Login
             </button>
+              <span *ngIf="loggedIn" >Hello, {{ username }}!</span>
+              <button  *ngIf="loggedIn" (click)="logout()">Logout</button>
+            
+            <app-otp-login *ngIf="showLoginDialog" (close)="closeLoginDialog()"></app-otp-login>
+
             <div class="e-appbar-separator"></div>
-            <button
+            <!-- <button
               ejs-button
               [isPrimary]="appBarColor.isPrimary"
               [cssClass]="appBarColor.loginClass"
             >
               Sign Up
-            </button>
+            </button> -->
 
             <ejs-menu
-              cssClass="e-inherit e-appbar-icon-menu {{
+              cssClass="e-inherit{{
                 appBarColor.colorClass
               }}"
               [items]="verticalMenuItems"
@@ -86,4 +94,4 @@
 </div>
 
 <!-- <router-outlet></router-outlet> -->
- 
+  <!-- <app-explore-new-car></app-explore-new-car> -->

@@ -1,0 +1,64 @@
+<!-- <div class="car-list">
+  <div *ngFor="let car of usedCars" class="car-card">
+    <img [src]="getImageUrl(car.imageUrl)" alt="{{ car.carName }}" class="car-img" />
+
+    <div class="car-info">
+      <h3>{{ car.carName }}</h3>
+      <p><strong>Brand:</strong> {{ car.carBrand }}</p>
+      <p><strong>Price:</strong> ₹{{ car.carPrice }}</p>
+      <p><strong>Fuel Type:</strong> {{ car.fuelType }}</p>
+      <button ejs-button class="view-seller-btn" (click)="viewSellerDetails(car.userSeller)">View Seller</button>
+    </div>
+  </div>
+</div>
+
+<ejs-dialog
+  [(visible)]="showDialog"
+  header="Seller Details"
+  [isModal]="true"
+  width="300px"
+  [showCloseIcon]="true"
+  (close)="closeDialog()"
+>
+  <div *ngIf="selectedSeller">
+    <p><strong>Name:</strong> {{ selectedSeller.userName }}</p>
+    <p><strong>Email:</strong> {{ selectedSeller.userEmail }}</p>
+    <p><strong>Phone:</strong> {{ selectedSeller.phoneNumber }}</p>
+    <p><strong>City:</strong> {{ selectedSeller.userCity }}</p>
+  </div>
+</ejs-dialog> -->
+<!-- Used Cars Listing -->
+<div class="car-list">
+  <div *ngFor="let car of usedCars" class="car-card">
+    <img [src]="getImageUrl(car.imageUrl)" alt="{{ car.carName }}" class="car-img" />
+    <div class="car-info">
+      <h3>{{ car.carName }}</h3>
+      <p><strong>Brand:</strong> {{ car.carBrand }}</p>
+      <p><strong>Price:</strong> ₹{{ car.carPrice }}</p>
+      <p><strong>Fuel Type:</strong> {{ car.fuelType }}</p>
+      <button ejs-button class="view-seller-btn" (click)="viewSellerDetails(car.userSeller)">
+        View Seller
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- OTP Login Dialog -->
+<app-otp-login *ngIf="showOtpLogin" (close)="handleLoginClose()"></app-otp-login>
+
+<!-- Seller Details Dialog -->
+<ejs-dialog
+  [(visible)]="showSellerDialog"
+  header="Seller Details"
+  [isModal]="true"
+  width="300px"
+  [showCloseIcon]="true"
+  (close)="closeSellerDialog()"
+>
+  <div *ngIf="selectedSeller">
+    <p><strong>Name:</strong> {{ selectedSeller.userName }}</p>
+    <p><strong>Email:</strong> {{ selectedSeller.userEmail }}</p>
+    <p><strong>Phone:</strong> {{ selectedSeller.phoneNumber }}</p>
+    <p><strong>City:</strong> {{ selectedSeller.userCity }}</p>
+  </div>
+</ejs-dialog>

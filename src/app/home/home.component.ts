@@ -1,15 +1,17 @@
 import { Component } from '@angular/core';
 import { NavbarComponent } from "../navbar/navbar.component";
 import { CardComponent } from "../card/card.component";
-
-
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { ModelDetailComponent } from "../model-detail/model-detail.component";
+import { MakeComponent } from "../make/make.component";
+import { ExploreNewCarComponent } from "../explore-new-car/explore-new-car.component";
+import { UsedCarListComponent } from "../used-car-list/used-car-list.component";
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
-  imports: [NavbarComponent, CardComponent, CommonModule, RouterModule, RouterOutlet, ModelDetailComponent],
+  imports: [NavbarComponent, CardComponent, CommonModule, RouterModule, RouterOutlet, ModelDetailComponent, MakeComponent, HttpClientModule,ExploreNewCarComponent, UsedCarListComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

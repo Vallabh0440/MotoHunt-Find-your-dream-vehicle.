@@ -1,1 +1,51 @@
-<p>model-detail works!</p>
+<div *ngIf="modelData">
+  <div class="model-details">
+    <!-- Model Image on the left -->
+    <div class="model-image-container">
+      <img [src]="formatImagePath(modelData?.images)" alt="{{ modelData?.modelName }}" class="model-image">
+    </div>
+
+    <!-- Model Details on the right -->
+    <div class="model-info">
+      <h2><i class="fas fa-car"></i> {{ modelData?.modelName }}</h2>
+      <p><strong><i class="fa-solid  fa-money-bill-wave"></i> Price:</strong> ₹{{ modelData?.price }}</p>
+      <p><strong><i class="fas fa-home"></i> Car Type:</strong> {{ modelData?.carType }}</p>
+      <p><strong><i class="fas fa-cogs"></i> Engine:</strong> {{ modelData?.engine }}</p>
+      <p><strong><i class="fas fa-bolt"></i> Power:</strong> {{ modelData?.power }}</p>
+        <!-- Show Variant Button -->
+        <button (click)="toggleVariants()">
+          {{ variantVisible ? 'Hide Variants' : 'Show Variants' }}
+        </button>
+    </div>
+      <div class="model-info2">
+        <p><strong><i class="fas fa-exchange-alt"></i> Transmission:</strong> {{ modelData?.transmission }}</p>
+        <p><strong><i class="fas fa-tachometer-alt"></i> Torque:</strong> {{ modelData?.torque }}</p>
+        <p><strong><i class="fas fa-battery-full"></i> Mileage:</strong> {{ modelData?.mileage }}</p>
+        <p><strong><i class="fas fa-gas-pump"></i> Fuel Type:</strong> {{ modelData?.fueltype }}</p>
+      </div>
+  </div>
+
+  <!-- Variant List -->
+  <div class="variant-list" *ngIf="variantVisible && modelData?.variant?.length > 0">
+    <h1><i class="fas fa-check-circle"></i> Variants</h1>
+    <div class="variant-cards-container">
+      <div *ngFor="let variant of modelData.variant" class="variant-card">
+        <div class="variant-image-container">
+          <img [src]="formatVariantImagePath(variant.images)" alt="{{ variant.name }}" class="variant-image">
+        </div>
+        <div class="variant-info">
+          <h4>{{ variant.name }}</h4>
+          <p><strong><i class="fas fa-cogs"></i> Engine:</strong> {{ variant.engine }}</p>
+          <p><strong><i class="fas fa-bolt"></i> Power:</strong> {{ variant.power }}</p>
+          <p><strong><i class="fas fa-exchange-alt"></i> Transmission:</strong> {{ variant.transmission }}</p>
+          <p><strong><i class="fas fa-tachometer-alt"></i> Torque:</strong> {{ variant.torque }}</p>
+          <p><strong><i class="fas fa-money-bill-wave"></i> Price:</strong> ₹{{ variant.price }}</p>
+          <p><strong><i class="fas fa-battery-full"></i> Mileage:</strong> {{ variant.mileage }}</p>
+          <p><strong><i class="fas fa-gas-pump"></i> Fuel Type:</strong> {{ variant.fueltype }}</p>
+          <p><strong><i class="fas fa-home"></i> Car Type:</strong> {{ variant.carType }}</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

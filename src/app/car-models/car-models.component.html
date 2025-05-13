@@ -1,0 +1,49 @@
+<!-- <h2>Models of {{ makeData?.company }}</h2>
+
+<div *ngIf="models.length > 0; else noModels">
+  <div *ngFor="let model of models" class="model-card">
+    <img [src]="'http://localhost:3000/' + model.images" alt="{{ model.modelName }}" width="200">
+    <h3>{{ model.modelName }}</h3>
+    <p><strong>Engine:</strong> {{ model.engine }}</p>
+    <p><strong>Power:</strong> {{ model.power }}</p>
+    <p><strong>Transmission:</strong> {{ model.transmission }}</p>
+    <p><strong>Mileage:</strong> {{ model.mileage }}</p>
+    <p><strong>Price:</strong> ₹{{ model.price }}</p>
+  </div>
+</div>
+
+<ng-template #noModels>
+  <p>No models available for this make.</p>
+</ng-template> -->
+
+<!-- car-model.component.html -->
+<div class="models-container">
+    <h2>Models</h2>
+  
+    <div *ngIf="models.length > 0; else noData">
+      <div *ngFor="let model of models" class="model-card">
+        <img [src]="getImageUrl(model.images)" alt="{{ model.modelName }}" class="model-image" />
+        <!-- <p>{{ 'http://localhost:3000/uploads/' + model.images }}</p> -->
+
+        <div class="model-info">
+          <h3>{{ model.modelName }}</h3>
+          <p><strong>Engine:</strong> {{ model.engine }}</p>
+          <p><strong>Power:</strong> {{ model.power }}</p>
+          <p><strong>Torque:</strong> {{ model.torque }}</p>
+          <p><strong>Transmission:</strong> {{ model.transmission }}</p>
+          <p><strong>Fuel Type:</strong> {{ model.fueltype }}</p>
+          <p><strong>Mileage:</strong> {{ model.mileage }}</p>
+          <p><strong>Price:</strong> ₹{{ model.price | number }}</p>
+          <div class="view-button-container">
+            <button class="view-button" (click)="onViewModel(models)">View Details</button>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    
+    <ng-template #noData>
+      <p>No models found for this make.</p>
+    </ng-template>
+  </div>
+  

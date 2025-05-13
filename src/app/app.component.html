@@ -1,2 +1,7 @@
 
-<app-home></app-home>
+<!-- <app-home></app-home> -->
+<app-navbar (modelSelected)="onModelSelect($event)" (variantSelected)="onVariantSelect($event)"></app-navbar>
+ <router-outlet></router-outlet>
+ <app-model-detail></app-model-detail>
+ <!-- <app-car-models></app-car-models> -->
+<!-- <app-explore-new-car></app-explore-new-car> -->

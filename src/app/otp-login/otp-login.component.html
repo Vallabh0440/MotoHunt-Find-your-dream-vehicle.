@@ -1,0 +1,77 @@
+<!-- 
+<ejs-dialog
+  *ngIf="!isLoggedIn"
+  #otpDialog
+  [visible]="visible"
+  [header]="'OTP Login'"
+  [width]="'400px'"
+  (close)="onDialogClose()"
+  [showCloseIcon]="true"
+>
+  <ng-container *ngIf="step === 'phone'">
+    <div class="p-2">
+      <input type="text" [(ngModel)]="username" placeholder="Username" /><br /><br />
+      <input type="text" [(ngModel)]="phoneNumber" placeholder="Phone Number" /><br /><br />
+      <button ejs-button (click)="sendOtp()">Send OTP</button>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="step === 'verify'">
+    <div class="p-2">
+      <input type="text" [(ngModel)]="otp" placeholder="Enter OTP" />
+      <button ejs-button (click)="verifyOtp()">Verify OTP</button>
+    </div>
+  </ng-container>
+</ejs-dialog> -->
+
+<!-- <ejs-dialog
+  *ngIf="!isLoggedIn"
+  #otpDialog
+  [visible]="visible"
+  [header]="' 🔐 OTP Login'"
+  [width]="'400px'"
+  (close)="onDialogClose()"
+  [showCloseIcon]="true"
+>
+
+    <div class="p-2" *ngIf="step === 'phone'">
+      <input type="text" [(ngModel)]="username" placeholder="Username" /><br /><br />
+      <input type="text" [(ngModel)]="phoneNumber" placeholder="Phone Number" /><br /><br />
+      <button ejs-button (click)="sendOtp()">Send OTP</button>
+    </div>
+
+    <div class="p-2" *ngIf="step === 'verify'">
+      <input type="text" [(ngModel)]="otp" placeholder="Enter OTP" />
+      <button ejs-button (click)="verifyOtp()">Verify OTP</button>
+    </div>
+
+</ejs-dialog> -->
+
+<ejs-dialog
+  *ngIf="!isLoggedIn"
+  #otpDialog
+  [visible]="visible"
+  [header]="'🔐 OTP Login'"
+  [width]="'400px'"
+  (close)="onDialogClose()"
+  [showCloseIcon]="true"
+  [isModal]="true"
+  cssClass="otp-dialog"
+>
+  <div class="otp-container">
+    <!-- Phone Step -->
+    <div *ngIf="step === 'phone'" class="otp-step">
+      <h4>Welcome! Please Login</h4>
+      <ejs-textbox [(ngModel)]="username" placeholder="👤 Username"></ejs-textbox>
+      <ejs-textbox [(ngModel)]="phoneNumber" placeholder="📱 Phone Number"></ejs-textbox>
+      <button ejs-button class="otp-btn" (click)="sendOtp()">Send OTP</button>
+    </div>
+
+    <!-- Verify OTP Step -->
+    <div *ngIf="step === 'verify'" class="otp-step">
+      <h4>Enter the OTP</h4>
+      <ejs-textbox [(ngModel)]="otp" placeholder="🔑 Enter OTP"></ejs-textbox>
+      <button ejs-button class="otp-btn" (click)="verifyOtp()">Verify OTP</button>
+    </div>
+  </div>
+</ejs-dialog>
